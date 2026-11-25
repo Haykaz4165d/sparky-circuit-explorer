@@ -1,7 +1,6 @@
 import type { ComponentType } from "react";
 import { FormulasSlide, GoalSlide, QuestionSlide, TasksSlide, TeamsSlide, TitleSlide } from "./slides-a";
 import { LightPhysicsSlide, ParadoxSlide, PhantomSlide, Team1Slide, Team2Slide, TimelineSlide } from "./slides-b";
-import { PollSlide } from "./slides-d";
 import { BulbGameSlide, CircuitsSlide } from "./slides-e";
 import { ConclusionSlide, DeliverablesSlide, TableSlide, Team3Slide, ThanksSlide } from "./slides-c";
 
@@ -26,6 +25,5 @@ export const slides: SlideDef[] = [
   { id: "table", title: "Հաշվարկային աղյուսակ", Component: TableSlide },
   { id: "deliverables", title: "Վերջնարդյունքներ", Component: DeliverablesSlide },
   { id: "conclusion", title: "Էներգախնայողության ծրագիր", Component: ConclusionSlide },
-  { id: "poll", title: "Քվեարկություն", Component: PollSlide },
   { id: "thanks", title: "Շնորհակալություն", Component: ThanksSlide },
 ];
