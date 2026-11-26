@@ -62,6 +62,9 @@ function Deck() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target?.closest("input, textarea, select, [contenteditable='true']")) return;
+      if (target?.closest("button") && [" ", "Enter"].includes(e.key)) return;
       if (["ArrowRight", "PageDown", " ", "Enter"].includes(e.key)) {
         e.preventDefault();
         go(index + 1);
@@ -148,8 +151,8 @@ function Deck() {
               <Component />
             </ScaledSlide>
           </DeckStage>
-          <button aria-label="Նախորդ սլայդ" onClick={() => go(index - 1)} className="absolute inset-y-0 left-0 w-1/5 cursor-w-resize" />
-          <button aria-label="Հաջորդ սլայդ" onClick={() => go(index + 1)} className="absolute inset-y-0 right-0 w-1/5 cursor-e-resize" />
+          <button aria-label="Նախորդ սլայդ" onClick={() => go(index - 1)} className="absolute inset-y-0 left-0 w-[5%] cursor-w-resize" />
+          <button aria-label="Հաջորդ սլայդ" onClick={() => go(index + 1)} className="absolute inset-y-0 right-0 w-[5%] cursor-e-resize" />
         </div>
       </main>
 

@@ -402,3 +402,35 @@
 .qr-scan { animation: qr-scan 2.8s ease-in-out infinite alternate; background: linear-gradient(to bottom, transparent, var(--primary), transparent); box-shadow: 0 0 24px var(--primary); }
 @keyframes qr-scan { from { transform: translateY(0); } to { transform: translateY(var(--qr-h, 400px)); } }
 .slide-static .qr-scan { display: none; }
+
+/* ---------- Interactive circuit laboratory ---------- */
+.circuit-grid {
+  background-image:
+    radial-gradient(circle at 1px 1px, oklch(0.88 0.07 225 / 0.12) 1px, transparent 1.5px),
+    radial-gradient(500px 300px at 60% 45%, oklch(0.84 0.16 80 / 0.06), transparent 75%);
+  background-size: 28px 28px, 100% 100%;
+}
+.bulb-slot { transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s, scale 0.2s; }
+.bulb-slot:hover { border-color: var(--primary); box-shadow: 0 0 32px -12px var(--primary); }
+.bulb-slot:active { cursor: grabbing; scale: 0.96; }
+.bulb-placed { animation: bulb-land 0.65s cubic-bezier(0.2, 1.5, 0.4, 1) backwards; }
+@keyframes bulb-land { from { transform: translateY(-55px) scale(0.55) rotate(-9deg); } }
+.socket-target { animation: socket-target 0.9s ease-in-out infinite alternate; }
+@keyframes socket-target {
+  from { box-shadow: 0 0 0 0 oklch(0.84 0.16 80 / 0.05); }
+  to { box-shadow: 0 0 36px 4px oklch(0.84 0.16 80 / 0.28); }
+}
+.bulb-energized .bulb-aura { animation: bulb-aura 1.8s ease-in-out infinite; transform-origin: 50px 45px; }
+@keyframes bulb-aura { 50% { transform: scale(1.12); } }
+.bulb-rays { animation: bulb-rays 8s linear infinite; transform-origin: 50px 45px; }
+@keyframes bulb-rays { to { transform: rotate(360deg); } }
+.bulb-filament { filter: drop-shadow(0 0 5px var(--primary)); }
+.wire-energized { filter: drop-shadow(0 0 7px var(--primary)); }
+.charge-dot { filter: drop-shadow(0 0 8px var(--led)); }
+.drag-source:hover .bulb-svg { transform: translateY(-5px) rotate(-4deg); }
+.drag-source .bulb-svg { transition: transform 0.25s; }
+.slide-static .charge-dot { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .socket-target, .bulb-energized .bulb-aura, .bulb-rays { animation: none; }
+  .charge-dot { display: none; }
+}

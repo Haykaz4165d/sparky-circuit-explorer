@@ -5,3 +5,4 @@
 - [x] Audience poll: QR code slide, /vote page (5 questions × 4 answers), saved votes, live percentages
 - [x] Slide: series vs parallel connections
 - [x] Slide: interactive bulb game (user toggles series/parallel)
+- [x] Upgrade bulb lab: drag-and-drop sockets, animated current, switch, voltage and live physics

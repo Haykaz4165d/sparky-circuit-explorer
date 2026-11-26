@@ -20,4 +20,16 @@ describe("circuit lab (12 V, 6 Ω bulbs)", () => {
   it("mixed: removing the series bulb turns everything off", () => {
     expect(solveCircuit("mixed", [true, false, false]).i).toBe(0);
   });
+  it("6 V across two series bulbs: I=0.5 A and each bulb gets 3 V", () => {
+    const c = solveCircuit("series", [false, false], 6);
+    expect(c.i).toBe(0.5); expect(c.bulbs[0]!.u).toBe(3); expect(c.bulbs[0]!.p).toBe(1.5);
+  });
+  it("zero source voltage stops the current without changing the resistance", () => {
+    const c = solveCircuit("parallel", [false, false], 0);
+    expect(c.r).toBe(3); expect(c.i).toBe(0); expect(c.bulbs.every((b) => b.p === 0)).toBe(true);
+  });
+  it("parallel: an empty socket leaves the other branch working", () => {
+    const c = solveCircuit("parallel", [false, true]);
+    expect(c.i).toBe(2); expect(c.bulbs[0]!.p).toBe(24); expect(c.bulbs[1]!.p).toBe(0);
+  });
 });
